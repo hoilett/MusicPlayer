@@ -1,0 +1,37 @@
+#######################################
+# Syntax Coloring Map for MusicPlayer
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+MusicPlayer	KEYWORD1
+
+
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+playMelody	KEYWORD2
+playNote	KEYWORD2
+getSpeaker	KEYWORD2
+setSpeakerPin	KEYWORD2
+
+
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+LENGTH_LET_IT_GO	LITERAL1
+MELODY_LET_IT_GO	LITERAL1
+DURATION_LET_IT_GO	LITERAL1
+LENGTH_POWER_RANGERS	LITERAL1
+MELODY_POWER_RANGERS	LITERAL1
+DURATION_POWER_RANGERS	LITERAL1
+LENGTH_ACT_A_FOOL	LITERAL1
+MELODY_ACT_A_FOOL	LITERAL1
+DURATION_ACT_A_FOOL	LITERAL1
+defaultSpeaker	LITERAL1
