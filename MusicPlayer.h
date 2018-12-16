@@ -69,7 +69,7 @@
 #define	Ab0	26
 #define	LA0	28
 #define	Bb0	29
-#define	B0	31
+#define	B0_MP 31
 #define	C1	33
 #define	Db1	35
 #define	D1	37
@@ -81,7 +81,7 @@
 #define	Ab1	52
 #define	LA1	55
 #define	Bb1	58
-#define	B1	62
+#define	B1_MP 62
 #define	C2	65
 #define	Db2	69
 #define	D2	73
@@ -160,7 +160,8 @@
 #define	Eb8	4978
 
 //DURATION OF THE NOTES 
-#define BPM 120 //BMP sets all other note durations
+//#define BPM 120 //BMP sets all other note durations
+#define BPM 110 //BMP sets all other note durations
 #define A 3*Q //1/4 + 1/2
 #define H 2*Q //half 2/4
 #define T W/3 //1/3
@@ -171,30 +172,68 @@
 #define S Q/4 //sixteenth 1/16
 #define W 4*Q //whole 4/4
 
-const int defaultSpeaker = 5;
+
+//"LET IT GO" chorus from the movie FROZEN
+const uint8_t LENGTH_LET_IT_GO = 51;
+const uint16_t MELODY_LET_IT_GO[] = { F5, G5, Ab5, Eb5, Eb5, Bb5,
+									  Ab5, F5, F5, F5, F5, G5, Ab5,
+									  F5, G5, Ab5, Eb5, Eb5, C6,
+									  Bb5, Ab5, Bb5, C6, C6, Db6, C6, Bb5, Ab5,
+									  Eb6, C6, Bb5, Ab5, Ab5, Eb6, C6, Ab5,
+									  Ab5, Ab5, G5, Eb5, Eb5,
+									  C5, Db5, Db5, C5, Db5, C5, Db5, Db5, C5, Ab4 };
+
+const uint16_t DURATION_LET_IT_GO[] = { E, E, H, E, E, H,
+							  			Q, E, E, Q, E, Q, H,
+							  			E, E, H, E, E, Q,
+							  			H, E, E, Q, E, Q, Q, Q, H,
+							  			T, T, H, Q, Q, M, L, Q,
+							  			Q, Q, T, T, H,
+							  			E, Q, E, E, E, E, E, E, E, H };
+
+
+//POWER RANGERS communicator sound
+const uint8_t LENGTH_POWER_RANGERS = 6;
+const uint16_t MELODY_POWER_RANGERS[] = { E7,E7,D7,E7,G7,E7 };
+const uint16_t DURATION_POWER_RANGERS[] = { E, E, S, E, E, E };
+
+
+//ACT A FOOL by Ludacris from 2 Fast 2 Furious
+const uint8_t LENGTH_ACT_A_FOOL = 20;
+const uint16_t MELODY_ACT_A_FOOL[] = { E4, E4, E4, F4, E4, F4, E4, F4, E4, F4,
+									   G4, G4, G4, G4, F4, F4, F4, F4, F4, F4};
+const uint16_t DURATION_ACT_A_FOOL[] = { E, E, E, E, E, E, E, E, E, E,
+										 E, E, E, E, E, E, E, E, E, E};
+
+
+
+const uint8_t defaultSpeaker = 5;
 
 
 class MusicPlayer
 {
 private:
 
-	int speaker; //the output pin
+	uint8_t speaker; //the output pin
 
+	
 public:
 
 	//Class Constructors
 	MusicPlayer();
-	MusicPlayer(int speaker);
+	MusicPlayer(uint8_t speaker);
 	
 	//play functions
-	void playMelody(int notes[], unsigned int duration[], int songLength);
-	void playMelody(int notes[], unsigned int duration[], int songLength,
-		int repetitions, unsigned long delayTime);
+	void playMelody(const uint16_t notes[], const uint16_t duration[],
+					const uint8_t songLength);
+	void playMelody(const uint16_t notes[], const uint16_t duration[],
+					const uint8_t songLength, uint8_t repetitions, unsigned long delayTime);
 
-    void playNote(int note);
-    void playNote(int note, unsigned int duration);
+    void playNote(const uint16_t note);
+    void playNote(const uint16_t note, const uint16_t duration);
 
-	int getSpeaker();
+	uint8_t getSpeaker();
+	void setSpeakerPin(uint8_t pin);
 
 };
 

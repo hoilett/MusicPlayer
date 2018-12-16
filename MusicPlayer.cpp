@@ -1,7 +1,8 @@
 /*
 * FILENAME:	MusicPlayer.h
 * AUTHOR:	Orlando S. Hoilett (library assembly)
-*			eserra, Instructables User (for musical notes and tone frequencies), http://www.instructables.com/member/eserra/
+*			eserra, Instructables User (for musical notes and tone frequencies),
+* 			http://www.instructables.com/member/eserra/
 * EMAIL:	orlandohoilett@gmail.com
 * WEBSITE:	http://www.instructables.com/member/ohoilett/
 * VERSION:	0.0
@@ -66,7 +67,7 @@ MusicPlayer::MusicPlayer() : speaker(defaultSpeaker)
 //MusicPlayer()
 //Alternate Constructor
 //Initializes the music player object with the input speaker pin.
-MusicPlayer::MusicPlayer(int speaker) : speaker(speaker)
+MusicPlayer::MusicPlayer(uint8_t speaker) : speaker(speaker)
 {
 }
 
@@ -79,7 +80,8 @@ MusicPlayer::MusicPlayer(int speaker) : speaker(speaker)
 //@param		songLength: the number of notes in the notes[] array
 //
 //Plays the notes in the notes[] array with the given durations.
-void MusicPlayer::playMelody(int notes[], unsigned int duration[], int songLength)
+void MusicPlayer::playMelody(const uint16_t notes[], const uint16_t duration[],
+							 const uint8_t songLength)
 {
   for (int i = 0; i < songLength; i++)
   {
@@ -99,8 +101,8 @@ void MusicPlayer::playMelody(int notes[], unsigned int duration[], int songLengt
 //
 //Plays the notes in the notes[] array with the given durations and given number
 //of repetitions.
-void MusicPlayer::playMelody(int notes[], unsigned int duration[], int songLength,
-	int repetitions, unsigned long delayTime)
+void MusicPlayer::playMelody(const uint16_t notes[], const uint16_t duration[],
+		const uint8_t songLength, uint8_t repetitions, unsigned long delayTime)
 {
 	for (int j = 0; j < repetitions; j++)
 	{
@@ -114,12 +116,12 @@ void MusicPlayer::playMelody(int notes[], unsigned int duration[], int songLengt
 }
 
 
-void MusicPlayer::playNote(int note)
+void MusicPlayer::playNote(const uint16_t note)
 {
     tone(speaker, note);
 }
 
-void MusicPlayer::playNote(int note, unsigned int duration)
+void MusicPlayer::playNote(const uint16_t note, const uint16_t duration)
 {
     tone(speaker, note, duration);
 }
@@ -127,7 +129,12 @@ void MusicPlayer::playNote(int note, unsigned int duration)
 
 //int getSpeaker()
 //@return		returns the pin the speaker is attached to
-int MusicPlayer::getSpeaker()
+uint8_t MusicPlayer::getSpeaker()
 {
 	return speaker;
+}
+
+void MusicPlayer::setSpeakerPin(uint8_t pin)
+{
+	speaker = pin;
 }
