@@ -46,6 +46,11 @@
 *
 * If you find any bugs in the code, have any questions, or suggestions please
 * feel free to contact me.
+ 
+ 
+ 
+ HOW TO READ SHEET MUSIC
+ https://www.musicnotes.com/blog/2014/04/11/how-to-read-sheet-music/
 
 */
 
@@ -158,10 +163,11 @@
 #define	Db8	4435
 #define	D8	4699
 #define	Eb8	4978
+#define rest 0
 
 //DURATION OF THE NOTES 
 //#define BPM 120 //BMP sets all other note durations
-#define BPM 110 //BMP sets all other note durations
+#define BPM 100 //BMP sets all other note durations
 #define A 3*Q //1/4 + 1/2
 #define H 2*Q //half 2/4
 #define T W/3 //1/3
@@ -174,8 +180,8 @@
 
 
 //"LET IT GO" chorus from the movie FROZEN
-const uint8_t LENGTH_LET_IT_GO = 51;
-const uint16_t MELODY_LET_IT_GO[] = { F5, G5, Ab5, Eb5, Eb5, Bb5,
+static const uint8_t LENGTH_LET_IT_GO = 51;
+static const uint16_t MELODY_LET_IT_GO[] = { F5, G5, Ab5, Eb5, Eb5, Bb5,
 									  Ab5, F5, F5, F5, F5, G5, Ab5,
 									  F5, G5, Ab5, Eb5, Eb5, C6,
 									  Bb5, Ab5, Bb5, C6, C6, Db6, C6, Bb5, Ab5,
@@ -183,7 +189,7 @@ const uint16_t MELODY_LET_IT_GO[] = { F5, G5, Ab5, Eb5, Eb5, Bb5,
 									  Ab5, Ab5, G5, Eb5, Eb5,
 									  C5, Db5, Db5, C5, Db5, C5, Db5, Db5, C5, Ab4 };
 
-const uint16_t DURATION_LET_IT_GO[] = { E, E, H, E, E, H,
+static const uint16_t DURATION_LET_IT_GO[] = { E, E, H, E, E, H,
 							  			Q, E, E, Q, E, Q, H,
 							  			E, E, H, E, E, Q,
 							  			H, E, E, Q, E, Q, Q, Q, H,
@@ -191,19 +197,113 @@ const uint16_t DURATION_LET_IT_GO[] = { E, E, H, E, E, H,
 							  			Q, Q, T, T, H,
 							  			E, Q, E, E, E, E, E, E, E, H };
 
+static const String NAME_LET_IT_GO = "Let It Go";
+
 
 //POWER RANGERS communicator sound
-const uint8_t LENGTH_POWER_RANGERS = 6;
-const uint16_t MELODY_POWER_RANGERS[] = { E7,E7,D7,E7,G7,E7 };
-const uint16_t DURATION_POWER_RANGERS[] = { E, E, S, E, E, E };
+static const uint8_t LENGTH_POWER_RANGERS = 10;
+static const uint16_t MELODY_POWER_RANGERS[LENGTH_POWER_RANGERS] =
+							{ E7, rest, E7, rest, D7, E7, rest, G7, rest, E7 };
+static const uint16_t DURATION_POWER_RANGERS[LENGTH_POWER_RANGERS] =
+							{ S, S, S, S, S, S, S, S, S, S };
+static const String NAME_POWER_RANGERS = "Power Rangers";
 
 
 //ACT A FOOL by Ludacris from 2 Fast 2 Furious
-const uint8_t LENGTH_ACT_A_FOOL = 20;
-const uint16_t MELODY_ACT_A_FOOL[] = { E4, E4, E4, F4, E4, F4, E4, F4, E4, F4,
-									   G4, G4, G4, G4, F4, F4, F4, F4, F4, F4};
-const uint16_t DURATION_ACT_A_FOOL[] = { E, E, E, E, E, E, E, E, E, E,
-										 E, E, E, E, E, E, E, E, E, E};
+static const uint8_t LENGTH_ACT_A_FOOL = 132;
+static const uint16_t MELODY_ACT_A_FOOL[LENGTH_ACT_A_FOOL] =
+				{ E4, rest, E4, rest, E4, rest, F4, E4, rest, F4, E4, rest, F4, E4, F4,
+				  G4, G4, rest, G4, rest, G4, rest, F4, F4, rest,
+					F4, F4, rest, F4, F4, rest, F4,
+E4, rest, E4, rest, E4, rest, F4, E4, rest, F4, E4, rest, F4, E4, F4,
+	G4, G4, rest, G4, rest, G4, rest, F4, F4, rest,
+	F4, F4, rest, F4, F4, rest, F4,
+E4, rest, E4, rest, E4, rest, F4, E4, rest, F4, E4, rest, F4, E4, F4,
+	G4, G4, rest, G4, rest, G4, rest, F4, F4, rest,
+	F4, F4, rest, F4, F4, rest, F4,
+E4, rest, E4, rest, E4, rest, F4, E4, rest, F4, E4, rest, F4, E4, F4,
+	G4, G4, rest, G4, rest, G4, rest, F4, F4, rest,
+	F4, F4, rest, F4, F4, rest, F4};
+
+static const uint16_t DURATION_ACT_A_FOOL[LENGTH_ACT_A_FOOL] =
+								{ S, S, S, S, S,
+								  S, S, S, S, S,
+								  S, S, S, S, S,
+								  S, S, S, S, S,
+								  S, S, S, S, S,
+								  S, S, S, S, S,
+									S, S, S, S, S, S, S,
+	S, S, S, S, S,
+	S, S, S, S, S,
+	S, S, S, S, S,
+	S, S, S, S, S,
+	S, S, S, S, S,
+	S, S,
+S, S, S, S, S,
+	S, S, S, S, S,
+	S, S, S, S, S,
+	S, S, S, S, S,
+	S, S, S, S, S,
+	S, S, S, S, S,
+	S, S,
+S, S, S, S, S,
+	S, S, S, S, S,
+	S, S, S, S, S,
+	S, S, S, S, S,
+	S, S, S, S, S,
+	S, S, S, S, S,
+	S, S
+};
+
+static const String NAME_ACT_A_FOOL = "Act a Fool";
+
+
+//KIMMUNICATOR beep
+static const uint8_t LENGTH_KIMMUNICATOR = 6;
+static const uint16_t MELODY_KIMMUNICATOR[] = { D7,rest,D7,rest,F7,D7 };
+static const uint16_t DURATION_KIMMUNICATOR[] = { S, S, S, S, S, S };
+static const String NAME_KIMMUNICATOR = "Kimmunicator";
+
+
+//HUNGAR GAMES WHISTLE short version
+static const uint8_t LENGTH_HUNGER_GAMES_SHORT = 4;
+static const uint16_t MELODY_HUNGER_GAMES_SHORT[] = { G5,Bb5,LA5,D5 };
+static const uint16_t DURATION_HUNGER_GAMES_SHORT[] = { Q, Q, Q, W };
+static const String NAME_HUNGER_GAMES_SHORT = "Hunger Games Whistle (Short)";
+
+
+
+
+//"Honor to Us All" from Mulan
+//https://www.musicnotes.com/sheetmusic/mtd.asp?ppn=MN0123249
+
+
+static const uint8_t NUM_MELODIES = 5;
+
+static const uint16_t* MELODIES[NUM_MELODIES] =
+{
+	MELODY_LET_IT_GO, MELODY_POWER_RANGERS, MELODY_ACT_A_FOOL, MELODY_KIMMUNICATOR,
+	MELODY_HUNGER_GAMES_SHORT
+};
+
+static const uint16_t* MELODY_DURATION[NUM_MELODIES] =
+{
+	DURATION_LET_IT_GO, DURATION_POWER_RANGERS, DURATION_ACT_A_FOOL, DURATION_KIMMUNICATOR,
+	DURATION_HUNGER_GAMES_SHORT
+};
+
+static const uint8_t MELODY_LENGTH[NUM_MELODIES] =
+{
+	LENGTH_LET_IT_GO, LENGTH_POWER_RANGERS, LENGTH_ACT_A_FOOL, LENGTH_KIMMUNICATOR,
+	LENGTH_HUNGER_GAMES_SHORT
+};
+
+static const String MELODY_NAME[NUM_MELODIES] =
+{
+	NAME_LET_IT_GO, NAME_POWER_RANGERS, NAME_ACT_A_FOOL, NAME_KIMMUNICATOR,
+	NAME_HUNGER_GAMES_SHORT
+};
+
 
 
 

@@ -85,7 +85,7 @@ void MusicPlayer::playMelody(const uint16_t notes[], const uint16_t duration[],
 {
   for (int i = 0; i < songLength; i++)
   {
-    tone(speaker, notes[i], duration[i]);
+    if(notes[i] != rest) tone(speaker, notes[i], duration[i]);
     delay(1+duration[i]);
   }
 }
@@ -108,7 +108,7 @@ void MusicPlayer::playMelody(const uint16_t notes[], const uint16_t duration[],
 	{
 		for (int i = 0; i < songLength; i++)
 		{
-			tone(speaker, notes[i], duration[i]);
+			if(notes[i] != rest) tone(speaker, notes[i], duration[i]);
 			delay(1+duration[i]);
 		}
 		delay(delayTime);
